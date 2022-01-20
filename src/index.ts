@@ -1,10 +1,29 @@
-import path from 'path';
-import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
+import { JSDOM } from 'jsdom';
 
-export function run() {
-  const argv = yargs(hideBin(process.argv)).argv;
-  console.log(`--path = ${path.resolve(argv.path)}`);
+console.log('hello index.ts', JSDOM);
+const { window } = new JSDOM(`
+<!DOCTYPE html>
+<html>
+<head></head>
+<body id="body">
+<span id="test">hello test</span>
+<script>
+class JsdomTest extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({mode: 'open'});
+  }
+
+  connectedCallback () {
+    this.innerHTML = 'hello, world!'
+  }
 }
+customElements.define( 'jsdom-test', JsdomTest )
+const jsdomTest = document.createElement('jsdom-test');
+document.getElementById('body').prepend(jsdomTest);
+</script
+</body>
+</html>
+`, { runScripts: 'dangerously' });
 
-run();
+console.log(window.document.getElementById('body').outerHTML);

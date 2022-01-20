@@ -14,12 +14,9 @@ class JsdomTest extends HTMLElement {
     console.log('hello constructor');
   }
 
-  connectedCallback() {
-    console.log('hello connection!');
-  }
-
   connectedCallback () {
-    this.innerHTML = 'hello, world!'
+    this.innerHTML = 'hello, world!';
+    console.log('hello connection');
   }
 
   adoptedCallback() {
@@ -35,4 +32,4 @@ document.getElementById('body').prepend(jsdomTest);
 </html>
 `, { runScripts: 'dangerously' });
 
-console.log(window.document.getElementById('test').outerHTML);
+console.log(window.document.getElementById('body').outerHTML);

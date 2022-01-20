@@ -1,6 +1,5 @@
 import { JSDOM } from 'jsdom';
 
-console.log('hello index.ts', JSDOM);
 const { window } = new JSDOM(`
 <!DOCTYPE html>
 <html>
@@ -12,18 +11,28 @@ class JsdomTest extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
+    console.log('hello constructor');
+  }
+
+  connectedCallback() {
+    console.log('hello connection!');
   }
 
   connectedCallback () {
     this.innerHTML = 'hello, world!'
   }
+
+  adoptedCallback() {
+    console.log('hello adoption.');
+  }
 }
-customElements.define( 'jsdom-test', JsdomTest )
+window.customElements.define( 'jsdom-test', JsdomTest )
 const jsdomTest = document.createElement('jsdom-test');
 document.getElementById('body').prepend(jsdomTest);
 </script
+<jsdom-test id="test">test</jsdom-test>
 </body>
 </html>
 `, { runScripts: 'dangerously' });
 
-console.log(window.document.getElementById('body').outerHTML);
+console.log(window.document.getElementById('test').outerHTML);

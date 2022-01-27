@@ -1,12 +1,14 @@
+import fs from 'fs';
 import { JSDOM } from 'jsdom';
 
-const options = {
+const {window} = new JSDOM('<!DOCTYPE html><html><body><div id="container"></div></body></html>',  {
   runScripts: 'dangerously',
   resources: 'usable',
-}
-
-JSDOM.fromFile("./dist/lib/index.html", options).then((dom) => {
-  return new Promise((resolve) => setTimeout(() => {resolve(dom)}, 1000));
-}).then(({window}) => {
-  console.log(window.document.getElementById('body').outerHTML);
 });
+
+const scriptContent = fs.readFileSync(process.cwd() + '/dist/lib/script.js', 'utf8');
+const scriptElement = window.document.createElement('script');
+scriptElement.textContent = scriptContent;
+window.document.body.appendChild(scriptElement);
+
+console.log(window.document.getElementById('container').innerHTML);

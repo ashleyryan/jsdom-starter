@@ -1,3 +1,4 @@
+// import {LitElement} from 'lit'
 class JsdomTest extends HTMLElement {
     constructor() {
       super();
@@ -14,6 +15,6 @@ class JsdomTest extends HTMLElement {
       console.log('hello adoption.');
     }
   }
-  window.customElements.define( 'jsdom-test', JsdomTest )
-  const jsdomTest = document.createElement('jsdom-test');
-  document.getElementById('body').prepend(jsdomTest);
+window.customElements.define( 'jsdom-test', JsdomTest )
+const jsdomTest = document.createElement('jsdom-test');
+document.getElementById('container').prepend(jsdomTest);

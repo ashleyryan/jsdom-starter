@@ -1,4 +1,6 @@
-// import {LitElement} from 'lit'
+import '@cds/core/select/register.js';
+
+
 class JsdomTest extends HTMLElement {
     constructor() {
       super();

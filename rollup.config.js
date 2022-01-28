@@ -1,4 +1,4 @@
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default {
 
@@ -10,10 +10,11 @@ export default {
 
     output: {
         file: './dist/browser/script.js',
-        format: 'cjs',
+        format: 'iife',
+        globals: ['window']
     },
 
     plugins: [
-        resolve(),
+        nodeResolve(),
     ]
 };

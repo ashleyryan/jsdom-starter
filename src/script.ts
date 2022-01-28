@@ -1,5 +1,16 @@
-import '@cds/core/select/register.js';
 
+import { CDSGlobal } from "@cds/core/internal/utils/global";
+import { CdsSelect } from "./select.element";
+
+window.CDS = {
+ environment: {
+   production: false
+ }
+} as CDSGlobal;
+
+window.customElements.define('cds-select', CdsSelect )
+
+/*
 
 class JsdomTest extends HTMLElement {
     constructor() {
@@ -20,3 +31,4 @@ class JsdomTest extends HTMLElement {
 window.customElements.define( 'jsdom-test', JsdomTest )
 const jsdomTest = document.createElement('jsdom-test');
 document.getElementById('container').prepend(jsdomTest);
+*/

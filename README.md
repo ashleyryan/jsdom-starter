@@ -11,5 +11,4 @@ To get started clone repo locally and run `npm install` at the root of the repo.
 ## NPM Scripts
 
 - `start`: runs TypeScript and Node server in watch mode during development.
-- `ci`: runs full CI process, clean/build/test
 - `build`: runs project build

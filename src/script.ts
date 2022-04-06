@@ -1,16 +1,25 @@
 
 import { CDSGlobal } from "@cds/core/internal/utils/global";
-import { CdsSelect } from "./select.element";
+import '@cds/core/input/register.js';
+
 
 window.CDS = {
- environment: {
-   production: false
- }
+  environment: {
+    production: false
+  }
 } as CDSGlobal;
 
-window.customElements.define('cds-select', CdsSelect )
+// mock resize observer
+class ResizeObserver {
+  observe() {
+  }
+  unobserve() {
+  }
+  disconnect() {
+  }
+}
+window.ResizeObserver = ResizeObserver;
 
-/*
 
 class JsdomTest extends HTMLElement {
     constructor() {
@@ -31,4 +40,3 @@ class JsdomTest extends HTMLElement {
 window.customElements.define( 'jsdom-test', JsdomTest )
 const jsdomTest = document.createElement('jsdom-test');
 document.getElementById('container').prepend(jsdomTest);
-*/

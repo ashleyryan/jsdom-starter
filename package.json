@@ -10,7 +10,7 @@
     "*"
   ],
   "scripts": {
-    "start": "node --trace-warnings dist/lib/index.js",
+    "start": "node --trace-warnings src/index.js",
     "clean": "del ./dist",
     "build": "tsc --project ./tsconfig.lib.json && rollup --config"
   },
@@ -37,6 +37,7 @@
     "fs-extra": "^10.0.0",
     "jsdom": "^19.0.0",
     "lit": "^2.1.2",
+    "pretty-format": "^27.5.1",
     "tslib": "^2.3.1",
     "yargs": "^17.3.1"
   }

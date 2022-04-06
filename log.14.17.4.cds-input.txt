@@ -1,0 +1,17 @@
+<cds-input
+  _nfg=""
+  cds-control=""
+>
+  
+    
+  <label>
+    Name
+  </label>
+  
+    
+  <input
+    type="text"
+  />
+  
+  
+</cds-input>

@@ -1,0 +1,3 @@
+<jsdom-test>
+  hello, world!
+</jsdom-test>
